@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rerading3d" />
 
-    <TextView
+    <EditText
         android:id="@+id/txtUsuario"
         android:layout_width="163dp"
         android:layout_height="46dp"

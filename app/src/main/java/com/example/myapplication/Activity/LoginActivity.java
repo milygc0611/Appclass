@@ -1,8 +1,11 @@
 package com.example.myapplication.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,21 +26,28 @@ public class LoginActivity extends AppCompatActivity {
 
         Button Txtaceptar = findViewById(R.id.txtaceptar);
 
+        EditText txtUsuario = findViewById(R.id.txtUsuario);
+
+        EditText txtPassword = findViewById(R.id.txtPassword);
+
         Txtaceptar.setOnClickListener(view -> {
 
-            Intent VentanaPrincipal = new Intent(this, MainActivity.class);
+            if (txtUsuario.getText().toString().isEmpty()) {
 
-            startActivity(VentanaPrincipal);
+                Toast.makeText( this, "Usuario no Registrado", Toast.LENGTH_SHORT).show();
 
-        });
+            } else if (txtPassword.getText().toString().isEmpty()) {
 
+               Toast.makeText( this, "Debe Introducir una contraseña", Toast.LENGTH_SHORT).show();
 
+            }else{
 
+                Intent VentanaPrincipal = new Intent(this, MainActivity.class);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+                startActivity(VentanaPrincipal);
+
+            }
+
+});
     }
 }
